@@ -2,8 +2,8 @@
   'use strict';
 
   const gs = window.gsap;
-  if (gs && window.MotionPathPlugin) gs.registerPlugin(MotionPathPlugin);
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const systemReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let reduceMotion = systemReduceMotion;
   const isFinePointer = window.matchMedia('(pointer:fine)').matches;
   const scenes = [...document.querySelectorAll('.scene')];
   const progress = document.getElementById('storyProgress');
@@ -34,12 +34,12 @@
     smile: {
       overline: '02 — sorriso',
       title: 'O seu sorriso.',
-      text: 'Ele tem um defeito técnico considerável: rouba a cena. Quando aparece, fica meio impossível fingir que eu não reparei. Reclamações serão encaminhadas ao setor responsável.'
+      text: 'Ele tem um defeito técnico considerável: rouba a cena. Quando aparece, fica meio impossível fingir que eu não reparei...'
     },
     voice: {
       overline: '03 — voz',
       title: 'A sua voz.',
-      text: 'Ela também ficou na memória. E junto com os seus traços tão marcantes, dá aquela sensação de que alguém gastou tempo demais cuidando dos detalhes.'
+      text: 'Ela também ficou na memória. E junto com os outros traços que já são bem marcantes, dá aquela sensação de que alguém gastou tempo demais cuidando dos detalhes em você. Algo como uma obra prima ou uma pintura, saka?'
     }
   };
 
@@ -185,6 +185,7 @@
   function revealPrefinalStatic(){document.querySelector('.prefinal-button').style.opacity=1;document.querySelector('.prefinal-button').style.visibility='visible'}
   document.getElementById('openInvitation').addEventListener('click',()=>goTo(8));
 
+
   function adaptiveText(){
     const elapsed=(Date.now()-startedAt)/1000; const explored=(eyeUnlocked?1:0)+detailsOpened+(easterFound?2:0)+(galleryTapped?1:0);
     if(explored>=6)return 'Você explorou praticamente tudo. Eu já imaginava 😌';
@@ -212,7 +213,7 @@
   function resizeAmbient(){const dpr=Math.min(devicePixelRatio||1,2);canvas.width=innerWidth*dpr;canvas.height=innerHeight*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const mobile=innerWidth<821;particles=Array.from({length:mobile?Math.min(24,Math.floor(innerWidth/18)):Math.min(46,Math.floor(innerWidth/22))},makeParticle)}
   function makeParticle(){return{x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:.35+Math.random()*1.4,v:.08+Math.random()*.22,drift:(Math.random()-.5)*.12,a:.1+Math.random()*.28,t:Math.random()>.76?'heart':'dot',r:Math.random()*Math.PI*2}}
   function drawHeart(x,y,size,alpha,rot){ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.scale(size/20,size/20);ctx.beginPath();ctx.moveTo(0,5);ctx.bezierCurveTo(-10,-5,-18,6,0,20);ctx.bezierCurveTo(18,6,10,-5,0,5);ctx.fillStyle=`rgba(255,83,128,${alpha})`;ctx.fill();ctx.restore()}
-  function ambientTick(){ctx.clearRect(0,0,innerWidth,innerHeight);particles.forEach(p=>{p.y-=p.v;p.x+=p.drift;p.r+=.002;if(p.y<-30){Object.assign(p,makeParticle());p.y=innerHeight+20}if(p.t==='heart')drawHeart(p.x,p.y,p.s*3,p.a,p.r);else{ctx.beginPath();ctx.fillStyle=`rgba(255,205,218,${p.a})`;ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill()}});requestAnimationFrame(ambientTick)}resizeAmbient();window.addEventListener('resize',resizeAmbient,{passive:true});if(!reduceMotion)ambientTick();
+  let ambientRunning=false; function ambientTick(){if(!ambientRunning)return;ctx.clearRect(0,0,innerWidth,innerHeight);particles.forEach(p=>{p.y-=p.v;p.x+=p.drift;p.r+=.002;if(p.y<-30){Object.assign(p,makeParticle());p.y=innerHeight+20}if(p.t==='heart')drawHeart(p.x,p.y,p.s*3,p.a,p.r);else{ctx.beginPath();ctx.fillStyle=`rgba(255,205,218,${p.a})`;ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fill()}});requestAnimationFrame(ambientTick)}function startAmbient(){if(ambientRunning||reduceMotion)return;ambientRunning=true;ambientTick()}resizeAmbient();window.addEventListener('resize',resizeAmbient,{passive:true});
 
   function startInviteSparkles(){const c=document.getElementById('celebrationCanvas'),x=c.getContext('2d');let pts=[];const resize=()=>{const dpr=Math.min(devicePixelRatio||1,2);c.width=innerWidth*dpr;c.height=innerHeight*dpr;x.setTransform(dpr,0,0,dpr,0,0);pts=Array.from({length:innerWidth<821?44:82},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:.4+Math.random()*1.5,v:.12+Math.random()*.4,a:.15+Math.random()*.55,w:Math.random()*10}))};resize();function tick(){if(current!==8)return;x.clearRect(0,0,innerWidth,innerHeight);pts.forEach(p=>{p.y-=p.v;p.x+=Math.sin((p.y+p.w)*.012)*.12;if(p.y<-10){p.y=innerHeight+10;p.x=Math.random()*innerWidth}x.beginPath();x.fillStyle=`rgba(242,205,137,${p.a})`;x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fill()});requestAnimationFrame(tick)}tick()}
   function celebrate(){if(typeof window.confetti!=='function'||reduceMotion)return;const palette=['#ff174d','#ff6f97','#f3cf88','#fff6ef'];const end=Date.now()+2100;(function frame(){confetti({particleCount:4,angle:60,spread:65,startVelocity:45,origin:{x:0,y:.72},colors:palette,shapes:['circle']});confetti({particleCount:4,angle:120,spread:65,startVelocity:45,origin:{x:1,y:.72},colors:palette,shapes:['circle']});if(Date.now()<end)requestAnimationFrame(frame)})()}
@@ -230,5 +231,25 @@
   soundToggle.addEventListener('click',()=>{if(!audioCtx){enableAudio();return}audioOn=!audioOn;ambientMaster.gain.value=audioOn?.033:0;soundToggle.classList.toggle('is-on',audioOn);soundToggle.querySelector('.sound-label').textContent=audioOn?'som on':'som';if(audioOn)heartbeatLoop();else clearTimeout(heartbeatTimer)});
 
   document.querySelectorAll('button,a').forEach(el=>el.addEventListener('pointerdown',()=>navigator.vibrate?.(7)));document.querySelectorAll('img').forEach(img=>img.addEventListener('dragstart',e=>e.preventDefault()));
-  intro();
+
+  const motionGate=document.getElementById('motionGate');
+  const motionFull=document.getElementById('motionFull');
+  const motionLite=document.getElementById('motionLite');
+  let appStarted=false;
+  function startApp(){
+    if(appStarted)return; appStarted=true;
+    document.body.classList.toggle('motion-full',!reduceMotion);
+    document.body.classList.toggle('motion-lite',reduceMotion);
+    if(!reduceMotion)startAmbient();
+    intro();
+  }
+  if(systemReduceMotion){
+    motionGate.hidden=false;
+    motionFull.addEventListener('click',()=>{reduceMotion=false;motionGate.hidden=true;startApp()},{once:true});
+    motionLite.addEventListener('click',()=>{reduceMotion=true;motionGate.hidden=true;startApp()},{once:true});
+  }else{
+    reduceMotion=false;
+    document.body.classList.add('motion-full');
+    startApp();
+  }
 })();

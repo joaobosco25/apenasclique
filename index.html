@@ -11,9 +11,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/app.css?v=3.0" />
+  <link rel="stylesheet" href="css/app.css?v=3.3" />
 </head>
 <body data-scene="0">
+  <div class="motion-gate" id="motionGate" hidden aria-modal="true" role="dialog" aria-labelledby="motionGateTitle">
+    <div class="motion-gate-card">
+      <span class="motion-gate-heart" aria-hidden="true">♥</span>
+      <p class="tiny-caps">um detalhe antes de começar</p>
+      <h2 id="motionGateTitle">Este convite foi feito para se mexer.</h2>
+      <p>Seu celular está configurado para reduzir animações. Você prefere ver a experiência completa?</p>
+      <div class="motion-gate-actions">
+        <button class="cta cta-fill" id="motionFull" type="button">Ver experiência completa <span>✦</span></button>
+        <button class="motion-lite" id="motionLite" type="button">Continuar com menos movimento</button>
+      </div>
+    </div>
+  </div>
   <canvas id="ambientCanvas" aria-hidden="true"></canvas>
   <div class="grain" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
@@ -44,12 +56,12 @@
         <div class="scene-glow intro-glow"></div>
         <div class="spark-core" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="intro-copy">
-          <p class="tiny-caps intro-kicker">ok…</p>
-          <h1 class="kinetic-line" data-kinetic>eu tentei te convidar do jeito normal. <em>3 vezes…</em></h1>
-          <p class="kinetic-line intro-secondary" data-kinetic>Mas aconteceram várias coisas com você e você não falou mais no assunto.</p>
-          <p class="intro-third" data-kinetic>Então, para a quarta tentativa, eu abandonei qualquer noção de simplicidade.</p>
+          <p class="tiny-caps intro-kicker">Querida Nardin...</p>
+          <h1 class="kinetic-line" data-kinetic>Eu tentei TRES vezes, fazer isso do jeito normal. <em>3 vezes…</em></h1>
+          <p class="kinetic-line intro-secondary" data-kinetic>Mas aconteceram várias coisas com você e depois dessas coisas, você não falou mais no assunto...De certa forma, nem demonstou o menor interesse em falar🤔🤔🤔... <br> Mas enfim, esse agora, será meu All-Win</p>
+          <p class="intro-third" data-kinetic>Por isso, para a QUARTA tentativa, eu abandonei qualquer noção de simplicidade ou charme.</p>
           <button class="cta cta-heart" id="openExperience" type="button">
-            <span>Abrir</span><i>♥</i>
+            <span>Abrir</span><i>✉️</i>
           </button>
         </div>
         <p class="corner-note">feito com uma quantidade questionável de capricho</p>
@@ -64,7 +76,7 @@
           <div class="risk-lines">
             <p><span>Duração</span><strong>aproximadamente 2 minutos</strong></p>
             <p><span>Risco</span><strong>acabar com planos para sexta-feira</strong></p>
-            <p><span>Nível de exagero</span><strong>deliberadamente alto</strong></p>
+            <p><span>Nível de exagero</span><strong>PROPOSITALMENTE alto</strong></p>
           </div>
           <button class="cta cta-fill" data-next type="button">Aceito o risco, vai… <span>→</span></button>
         </div>
@@ -90,19 +102,19 @@
           <span class="heartbeat-dot"></span>
         </div>
         <div class="heart-copy">
-          <p class="tiny-caps">sem teste. sem questionário.</p>
-          <h2>Tem coisas em você que eu ainda não conheço.</h2>
-          <p>E outras que foi simplesmente impossível não perceber.</p>
-          <button class="cta cta-ghost" data-next type="button">me mostra <span>♡</span></button>
+          <p class="tiny-caps">Querida Nardin...</p>
+          <h2>Tem muitas coisas em você que eu ainda não conheço.</h2>
+          <p>Mas outras que foi simplesmente impossível não perceber. Assim como voce percebeu meu cabelo e roupa hoje... kk</p>
+          <button class="cta cta-ghost" data-next type="button">me mostre <span>♡</span></button>
         </div>
       </section>
 
       <section class="scene scene-eyes" data-scene="3" data-label="a primeira coisa em que eu reparei">
         <div class="eyes-aura" aria-hidden="true"></div>
         <div class="eyes-copy">
-          <p class="tiny-caps">provavelmente foi a primeira coisa</p>
+          <p class="tiny-caps">Falando sério, foi a primeira coisa</p>
           <h2>Seus olhos.</h2>
-          <p class="eyes-lead">Tem um detalhe neles que é estranho de bonito.</p>
+          <p class="eyes-lead">Tem um detalhe neles que é muito perfeito.</p>
         </div>
 
         <div class="iris-pair" aria-hidden="true">
@@ -122,7 +134,7 @@
 
         <div class="eyes-reveal" id="eyesReveal">
           <p>Eu podia dizer só que são lindos. Mas o que me pegou foi aquele castanho que muda nas laterais — duas tonalidades quase escondidas.</p>
-          <strong>É o tipo de detalhe que prende o olhar sem fazer esforço.</strong>
+          <strong>É o tipo de detalhe que prende o olhar sem fazer esforço. A primeira vez que vi, eu tava sentado e consegui perceber de baixo pra cima, logo no 1º dia que fiquei la ctg. Eu nem precisava sentar lá. So queria ficar lá te reparando.</strong>
           <button class="cta cta-fill" data-next type="button">continuar <span>→</span></button>
         </div>
       </section>
@@ -130,8 +142,8 @@
       <section class="scene scene-orbit" data-scene="4" data-label="mais algumas coisas que eu reparei">
         <div class="orbit-title">
           <p class="tiny-caps">mais três pequenas evidências</p>
-          <h2>Outras coisas que eu reparei sem perceber que estava reparando.</h2>
-          <p>Toque nos pontos que estiverem brilhando.</p>
+          <h2>Outras coisas eu reparei sem perceber que estava reparando.</h2>
+          <p>Sugiro que abra os 3 aí embaixo, MENOS NO CORAÇÃO. Faça o que quiser, mas nao aperte varias vezes no coração pra forçar e ver o que tem dentro.</p>
         </div>
 
         <div class="orbit-stage" id="orbitStage">
@@ -154,6 +166,7 @@
         <div class="easter-note" id="easterNote" aria-hidden="true">
           <span>♥</span>
           <p><strong>Você é curiosa mesmo, hein?</strong><br>Eu gosto disso também.</p>
+          <p>Mas já que tu apertou, te acho muito GOSTOSA tb. Num nivel sobre humano, tu é muito gostosa. As vezes, te olho de relance. E tu e muito cheirosa tb. Mexe demais, ta louco... Mas... Continua ai vai.</p>
         </div>
 
         <div class="orbit-complete" id="orbitComplete">
@@ -166,7 +179,7 @@
         <div class="gallery-lights" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="gallery-copy">
           <p class="tiny-caps">coleção particular • peça única</p>
-          <h2>Se eu tivesse que escolher um movimento artístico…</h2>
+          <h2>Se eu tivesse que escolher uma forma simples e fácil de te falar como eu te vejo… Seria mais ou menos assim. Uma obra de arte😏😏</h2>
         </div>
 
         <button class="portrait-stage" id="portraitStage" type="button" aria-label="Toque no retrato">
@@ -181,30 +194,30 @@
             </div>
           </div>
           <div class="museum-card">
-            <strong>Sem título, 2026</strong>
-            <span>Escola: possivelmente renascentista</span>
-            <span>Técnica: detalhes difíceis de ignorar</span>
-            <em>obra em andamento — ainda falta conhecê-la de verdade</em>
+            <strong>Rythelly Nardin, 2026</strong>
+            <span>Escola: Minha cabeça e meu coração 😜</span>
+            <span>Técnica: detalhes hipnóticos e impossíveis de ignorar</span>
+            <em>obra em andamento — ainda falta leva-la pra cas... Quer dizer, ainda falta levar pro Museu.</em>
           </div>
           <span class="portrait-tap">toque na obra</span>
         </button>
 
         <div class="gallery-whisper" id="galleryWhisper" aria-hidden="true">
-          <p>Tá, talvez eu esteja exagerando.</p>
-          <strong>Mas não tanto.</strong>
+          <p>Ok, talvez eu esteja exagerando...</p>
+          <strong>Nah.. To não..</strong>
         </div>
 
-        <p class="renaissance-line">Porque, sinceramente, às vezes você parece ter saído de uma pintura renascentista.</p>
-        <button class="cta cta-ghost gallery-next" data-next type="button">tem uma parte mais importante <span>→</span></button>
+        <p class="renaissance-line">Porque, sinceramente, às vezes você parece ter sido realmente feita a mão, com tinta a óleo.</p>
+        <button class="cta cta-ghost gallery-next" data-next type="button">Mas tem uma parte mais importante e a que mais chama atenção <span>→</span></button>
       </section>
 
       <section class="scene scene-honest" data-scene="6" data-label="a parte importante">
         <div class="honest-lines" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="honest-copy">
-          <p class="tiny-caps">essa é a parte importante</p>
-          <h2>Eu ainda não te conheço de verdade.</h2>
-          <p>E esse app não é uma declaração gigantesca.</p>
-          <p>É só uma maneira <em>bem exagerada</em> de dizer que eu gostaria de mudar isso.</p>
+          <p class="tiny-caps"></p>
+          <h2>Essa é a parte importante</h2>
+          <p>Voce também é uma das mulheres mais fortes e gentis que eu já conheci (e olha que nem conheci muito ainda, pq vc nao responde)</p>
+          <p>Esse app pode parecer demais, mas é só uma maneira <em>um pouco exagerada</em> de dizer que eu gostaria de começar a sair com voce. De ter um tempo a sós com voce, sem hora pra ir emora. E sim, o quanto eu gostaria de uma chance pra que voce, também me conheça um pouco melhor.</p>
           <p class="honest-last">Começando por uma sexta-feira.</p>
           <button class="cta cta-heart" data-next type="button"><span>entendi</span><i>♥</i></button>
         </div>
@@ -213,7 +226,7 @@
       <section class="scene scene-prefinal" data-scene="7" data-label="sem mais enrolação">
         <div class="prefinal-glow" aria-hidden="true"></div>
         <div class="prefinal-copy">
-          <p class="prefinal-one">Enfim…</p>
+          <p class="prefinal-one">Enfim Nardin…</p>
           <p class="prefinal-two">chega de enrolar.</p>
           <button class="cta cta-fill prefinal-button" id="openInvitation" type="button">abrir o convite <span>→</span></button>
         </div>
@@ -247,7 +260,7 @@
             </div>
             <p class="route-caption">um caminho curto até uma boa conversa</p>
 
-            <p class="invite-message">Eu quero te levar para sair. Sem roteiro perfeito, sem promessa cinematográfica — só nós dois, um lugar legal e a chance de finalmente conversar sem uma tela no meio.</p>
+            <p class="invite-message">Eu quero te levar para sair. Sem roteiro, sem pressa, sem tempo pra ir embora — só nós dois, um lugar legal e a chance de finalmente conversar sem uma tela no meio e sem ninguem além de nós dois.</p>
             <p class="invite-question">Topa ir comigo?</p>
             <div class="invite-actions">
               <button class="answer answer-yes" id="yesButton" type="button"><span>Eu topo</span><b>♥</b></button>
@@ -283,8 +296,9 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+  <script>window.gsap||document.write('<script src="https://unpkg.com/gsap@3.13.0/dist/gsap.min.js"><\/script>')</script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-  <script src="js/app.js?v=3.0"></script>
+  <script>window.confetti||document.write('<script src="https://unpkg.com/canvas-confetti@1.9.3/dist/confetti.browser.min.js"><\/script>')</script>
+  <script src="js/app.js?v=3.3"></script>
 </body>
 </html>
