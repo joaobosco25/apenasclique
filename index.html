@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#3a0011" />
+  <meta name="description" content="Uma pequena experiência preparada especialmente para você." />
+  <title>Uma pequena experiência ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/app.css?v=3.0" />
+</head>
+<body data-scene="0">
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="cursor-rose" aria-hidden="true"><span>♥</span></div>
+
+  <div class="story-guide" id="storyGuide" aria-hidden="true">
+    <span class="guide-heart">♥</span>
+    <i></i>
+  </div>
+
+  <div class="transition-bloom" id="transitionBloom" aria-hidden="true"><span>♥</span></div>
+
+  <button class="sound-toggle" id="soundToggle" type="button" aria-label="Ativar ou desativar som">
+    <span class="sound-icon">♪</span><span class="sound-label">som</span>
+  </button>
+
+  <main class="experience" id="experience" aria-live="polite">
+    <div class="topline">
+      <span class="topline-dot"></span>
+      <span id="chapterLabel">uma tentativa um pouco exagerada</span>
+      <span class="topline-count" id="chapterCount">01 / 09</span>
+    </div>
+
+    <div class="story-progress" aria-hidden="true"><span id="storyProgress"></span></div>
+
+    <div class="stage" id="stage">
+      <section class="scene scene-intro is-active" data-scene="0" data-label="uma tentativa um pouco exagerada">
+        <div class="scene-glow intro-glow"></div>
+        <div class="spark-core" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="intro-copy">
+          <p class="tiny-caps intro-kicker">ok…</p>
+          <h1 class="kinetic-line" data-kinetic>eu tentei te convidar do jeito normal. <em>3 vezes…</em></h1>
+          <p class="kinetic-line intro-secondary" data-kinetic>Mas aconteceram várias coisas com você e você não falou mais no assunto.</p>
+          <p class="intro-third" data-kinetic>Então, para a quarta tentativa, eu abandonei qualquer noção de simplicidade.</p>
+          <button class="cta cta-heart" id="openExperience" type="button">
+            <span>Abrir</span><i>♥</i>
+          </button>
+        </div>
+        <p class="corner-note">feito com uma quantidade questionável de capricho</p>
+      </section>
+
+      <section class="scene scene-risk" data-scene="1" data-label="aceitar o risco">
+        <div class="risk-aurora"></div>
+        <div class="glass-letter">
+          <div class="wax-seal" aria-hidden="true"><span>♥</span></div>
+          <p class="tiny-caps">pequeno aviso antes de continuar</p>
+          <h2>Uma pequena experiência foi preparada para você.</h2>
+          <div class="risk-lines">
+            <p><span>Duração</span><strong>aproximadamente 2 minutos</strong></p>
+            <p><span>Risco</span><strong>acabar com planos para sexta-feira</strong></p>
+            <p><span>Nível de exagero</span><strong>deliberadamente alto</strong></p>
+          </div>
+          <button class="cta cta-fill" data-next type="button">Aceito o risco, vai… <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="scene scene-heart" data-scene="2" data-label="o que eu realmente queria dizer">
+        <div class="heart-halo" aria-hidden="true"></div>
+        <div class="big-heart-wrap" aria-hidden="true">
+          <svg class="big-heart" viewBox="0 0 400 360" role="presentation">
+            <defs>
+              <filter id="heartGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="8" result="blur" />
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <linearGradient id="heartStroke" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ff789e"/>
+                <stop offset=".45" stop-color="#ff174d"/>
+                <stop offset="1" stop-color="#ffb6c9"/>
+              </linearGradient>
+            </defs>
+            <path id="heartPath" d="M200 322 C170 286 55 220 55 126 C55 61 109 34 154 48 C178 55 194 73 200 87 C206 73 222 55 246 48 C291 34 345 61 345 126 C345 220 230 286 200 322 Z" fill="rgba(255,20,70,.045)" stroke="url(#heartStroke)" stroke-width="4" filter="url(#heartGlow)"/>
+          </svg>
+          <span class="heartbeat-dot"></span>
+        </div>
+        <div class="heart-copy">
+          <p class="tiny-caps">sem teste. sem questionário.</p>
+          <h2>Tem coisas em você que eu ainda não conheço.</h2>
+          <p>E outras que foi simplesmente impossível não perceber.</p>
+          <button class="cta cta-ghost" data-next type="button">me mostra <span>♡</span></button>
+        </div>
+      </section>
+
+      <section class="scene scene-eyes" data-scene="3" data-label="a primeira coisa em que eu reparei">
+        <div class="eyes-aura" aria-hidden="true"></div>
+        <div class="eyes-copy">
+          <p class="tiny-caps">provavelmente foi a primeira coisa</p>
+          <h2>Seus olhos.</h2>
+          <p class="eyes-lead">Tem um detalhe neles que é estranho de bonito.</p>
+        </div>
+
+        <div class="iris-pair" aria-hidden="true">
+          <div class="iris iris-left"><span></span><i></i></div>
+          <div class="iris iris-right"><span></span><i></i></div>
+        </div>
+
+        <div class="eye-interaction" id="eyeInteraction">
+          <p class="eye-instruction" id="eyeInstruction">arraste o brilho até o outro lado</p>
+          <div class="eye-track" id="eyeTrack">
+            <div class="eye-track-fill" id="eyeTrackFill"></div>
+            <button class="eye-spark" id="eyeSpark" type="button" aria-label="Arraste para revelar"><span>✦</span></button>
+            <div class="eye-target" id="eyeTarget"><span>♡</span></div>
+          </div>
+          <button class="eye-fallback" id="eyeFallback" type="button">ou toque para revelar</button>
+        </div>
+
+        <div class="eyes-reveal" id="eyesReveal">
+          <p>Eu podia dizer só que são lindos. Mas o que me pegou foi aquele castanho que muda nas laterais — duas tonalidades quase escondidas.</p>
+          <strong>É o tipo de detalhe que prende o olhar sem fazer esforço.</strong>
+          <button class="cta cta-fill" data-next type="button">continuar <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="scene scene-orbit" data-scene="4" data-label="mais algumas coisas que eu reparei">
+        <div class="orbit-title">
+          <p class="tiny-caps">mais três pequenas evidências</p>
+          <h2>Outras coisas que eu reparei sem perceber que estava reparando.</h2>
+          <p>Toque nos pontos que estiverem brilhando.</p>
+        </div>
+
+        <div class="orbit-stage" id="orbitStage">
+          <div class="orbit-ring ring-a"></div>
+          <div class="orbit-ring ring-b"></div>
+          <button class="orbit-center" id="easterHeart" type="button" aria-label="Coração"><div class="mini-heart">♥</div></button>
+
+          <button class="orbit-node node-personality" data-detail="personality" type="button"><span>01</span><b>personalidade</b></button>
+          <button class="orbit-node node-smile" data-detail="smile" type="button"><span>02</span><b>sorriso</b></button>
+          <button class="orbit-node node-voice" data-detail="voice" type="button"><span>03</span><b>voz</b></button>
+        </div>
+
+        <div class="detail-float" id="detailFloat" aria-live="polite">
+          <button class="detail-close" id="detailClose" type="button" aria-label="Fechar">×</button>
+          <p class="detail-overline" id="detailOverline">01 — personalidade</p>
+          <h3 id="detailTitle">A sua personalidade.</h3>
+          <p id="detailText"></p>
+        </div>
+
+        <div class="easter-note" id="easterNote" aria-hidden="true">
+          <span>♥</span>
+          <p><strong>Você é curiosa mesmo, hein?</strong><br>Eu gosto disso também.</p>
+        </div>
+
+        <div class="orbit-complete" id="orbitComplete">
+          <p>acho que agora posso explicar melhor.</p>
+          <button class="cta cta-fill" data-next type="button">continuar <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="scene scene-gallery" data-scene="5" data-label="uma explicação visual">
+        <div class="gallery-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="gallery-copy">
+          <p class="tiny-caps">coleção particular • peça única</p>
+          <h2>Se eu tivesse que escolher um movimento artístico…</h2>
+        </div>
+
+        <button class="portrait-stage" id="portraitStage" type="button" aria-label="Toque no retrato">
+          <div class="ornament ornament-one"></div>
+          <div class="ornament ornament-two"></div>
+          <div class="gold-frame">
+            <div class="frame-bevel">
+              <img src="assets/ela.webp" alt="Retrato usado no convite" draggable="false" />
+              <div class="portrait-light"></div>
+              <div class="portrait-grain"></div>
+              <div class="portrait-vignette"></div>
+            </div>
+          </div>
+          <div class="museum-card">
+            <strong>Sem título, 2026</strong>
+            <span>Escola: possivelmente renascentista</span>
+            <span>Técnica: detalhes difíceis de ignorar</span>
+            <em>obra em andamento — ainda falta conhecê-la de verdade</em>
+          </div>
+          <span class="portrait-tap">toque na obra</span>
+        </button>
+
+        <div class="gallery-whisper" id="galleryWhisper" aria-hidden="true">
+          <p>Tá, talvez eu esteja exagerando.</p>
+          <strong>Mas não tanto.</strong>
+        </div>
+
+        <p class="renaissance-line">Porque, sinceramente, às vezes você parece ter saído de uma pintura renascentista.</p>
+        <button class="cta cta-ghost gallery-next" data-next type="button">tem uma parte mais importante <span>→</span></button>
+      </section>
+
+      <section class="scene scene-honest" data-scene="6" data-label="a parte importante">
+        <div class="honest-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="honest-copy">
+          <p class="tiny-caps">essa é a parte importante</p>
+          <h2>Eu ainda não te conheço de verdade.</h2>
+          <p>E esse app não é uma declaração gigantesca.</p>
+          <p>É só uma maneira <em>bem exagerada</em> de dizer que eu gostaria de mudar isso.</p>
+          <p class="honest-last">Começando por uma sexta-feira.</p>
+          <button class="cta cta-heart" data-next type="button"><span>entendi</span><i>♥</i></button>
+        </div>
+      </section>
+
+      <section class="scene scene-prefinal" data-scene="7" data-label="sem mais enrolação">
+        <div class="prefinal-glow" aria-hidden="true"></div>
+        <div class="prefinal-copy">
+          <p class="prefinal-one">Enfim…</p>
+          <p class="prefinal-two">chega de enrolar.</p>
+          <button class="cta cta-fill prefinal-button" id="openInvitation" type="button">abrir o convite <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="scene scene-invite" data-scene="8" data-label="o convite oficial">
+        <div class="curtain curtain-left" aria-hidden="true"><div class="curtain-folds"></div></div>
+        <div class="curtain curtain-right" aria-hidden="true"><div class="curtain-folds"></div></div>
+        <div class="curtain-top" aria-hidden="true"></div>
+        <canvas id="celebrationCanvas" aria-hidden="true"></canvas>
+
+        <div class="invite-reveal" id="inviteReveal">
+          <div class="invite-aura"></div>
+          <div class="invite-card" id="inviteCard">
+            <div class="invite-border border-outer"></div>
+            <div class="invite-border border-inner"></div>
+            <div class="corner corner-tl">✦</div><div class="corner corner-tr">✦</div><div class="corner corner-bl">✦</div><div class="corner corner-br">✦</div>
+
+            <p class="invite-kicker">convite oficial • nº 0004</p>
+            <div class="invite-heart-mark">♥</div>
+            <p class="invite-date">02 · 10 · 2026</p>
+            <h2>Open House<br><span>Rock Bar</span></h2>
+            <div class="invite-rule"><i></i><span>✦</span><i></i></div>
+            <div class="invite-meta">
+              <div><span>sexta-feira</span><strong>21:00</strong></div>
+              <div><span>cidade</span><strong>Uberlândia</strong></div>
+            </div>
+
+            <div class="route-line" aria-hidden="true">
+              <span class="route-start">♥</span><i></i><span class="route-end">✦</span>
+            </div>
+            <p class="route-caption">um caminho curto até uma boa conversa</p>
+
+            <p class="invite-message">Eu quero te levar para sair. Sem roteiro perfeito, sem promessa cinematográfica — só nós dois, um lugar legal e a chance de finalmente conversar sem uma tela no meio.</p>
+            <p class="invite-question">Topa ir comigo?</p>
+            <div class="invite-actions">
+              <button class="answer answer-yes" id="yesButton" type="button"><span>Eu topo</span><b>♥</b></button>
+              <button class="answer answer-maybe" id="maybeButton" type="button">Tenho perguntas 😌</button>
+            </div>
+            <p class="adaptive-line" id="adaptiveLine"></p>
+            <p class="invite-footer">dress code: você do jeito que quiser • eu cuido do resto</p>
+          </div>
+        </div>
+
+        <div class="response-layer" id="responseLayer" aria-hidden="true">
+          <div class="response-card response-yes" id="yesResponse">
+            <div class="confirmed-stamp" id="confirmedStamp">CONFIRMADO</div>
+            <div class="response-heart">♥</div>
+            <p class="tiny-caps">perfeito.</p>
+            <h2>Então temos um encontro.</h2>
+            <div class="confirmed-route" aria-hidden="true">
+              <span>sexta · 21h</span><i><b></b></i><span>Open House Rock Bar</span>
+            </div>
+            <p>Pronto. Agora não tem mais como fingir que eu não tentei 😌</p>
+            <a class="cta cta-fill response-link" id="yesWhatsApp" href="#" target="_blank" rel="noopener noreferrer">me responder no WhatsApp <span>→</span></a>
+          </div>
+          <div class="response-card" id="maybeResponse">
+            <div class="response-heart outline">♡</div>
+            <p class="tiny-caps">justo.</p>
+            <h2>O departamento de convites extravagantes aceita contrapropostas.</h2>
+            <p>Pode perguntar, negociar horário ou só rir de tudo isso comigo.</p>
+            <a class="cta cta-fill response-link" id="maybeWhatsApp" href="#" target="_blank" rel="noopener noreferrer">falar comigo <span>→</span></a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="js/app.js?v=3.0"></script>
+</body>
+</html>
